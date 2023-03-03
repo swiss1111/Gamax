@@ -1,0 +1,64 @@
+.menuWrapper {
+  width: 200px;
+  border-right: 1px solid #E3E4ED;
+  display: flex;
+  flex-direction: column;
+}
+
+.logoWrapper {
+  padding: 25px 0;
+  display: flex;
+  justify-content: center;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  margin: 0;
+  border-radius: 25px;
+  background-color: #6566F0;
+  color: #E2E5FF;
+  text-align: center;
+  line-height: 50px;
+}
+
+.sidebar {
+  flex: 1;
+}
+
+.menuList {
+  margin: 0;
+  padding: 0 5px;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+
+  & li {
+    list-style: none;
+    padding: 0 0 10px 0;
+
+    & a {
+      text-decoration: none;
+      color: #9E9FAF;
+
+      &:hover {
+        color: #6566F0;
+      }
+
+      &:active {
+        color: #6566F0;
+      }
+    }
+  }
+}
+
+.infoWrapper {
+  padding: 10px 0;
+  text-align: center;
+
+  & p {
+    margin: 0;
+    font-size: 12px;
+  }
+}

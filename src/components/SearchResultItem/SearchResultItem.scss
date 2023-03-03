@@ -1,0 +1,42 @@
+.resultCard {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 25px;
+  border-radius: 10px;
+}
+
+.title {
+  margin: 0;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cardHeader {
+  margin-bottom: 10px;
+}
+
+.cardBody {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.detail {
+  width: 45%;
+  min-width: 300px;
+}
+
+.cardFooter {
+  display: flex;
+  margin-top: 10px;
+}
+
+.tag {
+  background-color: #6566F0;
+  color: #fff;
+  padding: 5px;
+  border-radius: 5px;
+  margin: 0 5px 5px 0;
+}

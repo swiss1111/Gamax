@@ -1,5 +1,5 @@
 import React from "react";
-import {SearchItem} from "../../interfaces/search";
+import {SearchItem} from "../../interfaces/stackExchangeInterface";
 import "./SearchResultItem.scss"
 
 interface Props {

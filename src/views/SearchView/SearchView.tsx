@@ -1,16 +1,8 @@
 import React, {useState} from "react";
-import {data} from "./mock";
 import SearchResultItem from "../../components/SearchResultItem/SearchResultItem";
-import {SearchResult} from "../../interfaces/search";
+import {SearchResult} from "../../interfaces/stackExchangeInterface";
 import "./SearchView.scss";
-
-const fetchSearchResults = (query: string) => {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(data);
-    }, 1000);
-  });
-}
+import {search} from "../../apiControllers/stackExchangeApi";
 
 const defaultState: SearchResult = {
   items: [],
@@ -29,10 +21,16 @@ const useSearch = () => {
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     setLoading(true);
-    const searchResults = await fetchSearchResults(query); // TODO: megcsinálni a rendes kérést
-    // @ts-ignore
-    setResults(searchResults);
-    setLoading(false);
+
+    search(query).then(resp => {
+      console.log('SearchView.tsx handleSubmit', resp);
+      setResults(resp);
+      setLoading(false);
+    }).catch(err => {
+      console.error('SearchView.tsx handleSubmit', err);
+      setResults(defaultState);
+      setLoading(false);
+    })
   };
 
   return {query, loading, results, handleQueryChange, handleSubmit};

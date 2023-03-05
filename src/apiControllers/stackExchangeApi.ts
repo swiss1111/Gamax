@@ -10,7 +10,7 @@ export async function search(
     page: 1,
     pagesize: 10,
     order: "desc",
-    sort: "activity",
+    sort: "relevance",
     intitle: query,
     site: "stackoverflow"
   };

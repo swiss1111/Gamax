@@ -13,6 +13,30 @@
   overflow: auto;
 }
 
-.resultsContainer {
+.searchForm {
+  display: flex;
+}
 
+.searchInput {
+  flex: 1;
+  background-color: #2D2D2D;
+  color: #E6E9EB;
+  box-shadow: none;
+  border: 1px solid #696F74;
+  font-size: 18px;
+  line-height: 18px;
+  outline: none;
+}
+
+.submitButton {
+  border: 0;
+  color: #E6E9EB;
+  background-color: #0C64A9;
+  font-size: 18px;
+  line-height: 18px;
+  padding: 10px;
+
+  &:hover {
+    background-color: #0074CC;
+  }
 }

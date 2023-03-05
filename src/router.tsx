@@ -4,6 +4,10 @@ import {
 import SearchView from "./views/SearchView/SearchView";
 import UserView from "./views/UserView/UserView";
 
+export function loader({ params }: {params: any} ) {
+  return { ...params };
+}
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -12,6 +16,7 @@ const router = createBrowserRouter([
   {
     path: "/user/:userId?",
     element: <UserView />,
+    loader: loader,
   },
   {
     path: "*",

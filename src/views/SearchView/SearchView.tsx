@@ -23,7 +23,6 @@ const useSearch = () => {
     setLoading(true);
 
     search(query).then(resp => {
-      console.log('SearchView.tsx handleSubmit', resp);
       setResults(resp);
       setLoading(false);
     }).catch(err => {
@@ -42,9 +41,9 @@ function SearchView() {
   return (
     <div className="searchView">
       <div className="searchWrapper">
-        <form onSubmit={handleSubmit}>
-          <input type="text" value={query} onChange={handleQueryChange}/>
-          <button type="submit">Search</button>
+        <form className="searchForm" onSubmit={handleSubmit}>
+          <input className="searchInput" type="text" value={query} onChange={handleQueryChange}/>
+          <button className="submitButton" type="submit">Search</button>
         </form>
       </div>
       <div className="resultsWrapper">

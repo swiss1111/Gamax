@@ -34,6 +34,15 @@ export interface SearchResult {
   quota_remaining?: number;
 }
 
+export interface SearchParams {
+  page: number;
+  pagesize: number;
+  order: string;
+  sort: string;
+  intitle: string;
+  site: string;
+}
+
 export interface UserItem {
   badge_counts: {
     bronze: number;
@@ -43,6 +52,8 @@ export interface UserItem {
   account_id: number;
   is_employee: boolean;
   last_access_date: number;
+  last_modified_date?: number;
+  accept_rate?: number;
   reputation_change_year: number;
   reputation_change_quarter: number;
   reputation_change_month: number;
@@ -55,6 +66,7 @@ export interface UserItem {
   link: string;
   profile_image: string;
   display_name: string;
+  website_url?: string;
 }
 
 export interface UserResult {
@@ -63,4 +75,15 @@ export interface UserResult {
   backoff?: number;
   quota_max?: number;
   quota_remaining?: number;
+}
+
+export interface BadgeItem {
+  badgeNumber: number;
+  type: "gold" | "silver" | "bronze";
+}
+
+export interface UserParams {
+  order: string;
+  sort: string;
+  site: string;
 }

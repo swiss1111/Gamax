@@ -11,9 +11,9 @@ function SearchResultItem(props: Props) {
   return (
     <div className="resultCard">
       <div className="leftContainer">
-        <div className="score">{result.score} pont</div>
-        {result.is_answered && (<div className="isAnswered">Megválaszolt</div>)}
-        <div className="views">{result.view_count} olvasó</div>
+        <div className="score">{result.score} score</div>
+        {result.is_answered && (<div className="isAnswered">Answered</div>)}
+        <div className="views">{result.view_count} view</div>
       </div>
       <div className="body">
         <h2 className="title"><a href={result.link} target="_blank">{result.title}</a></h2>

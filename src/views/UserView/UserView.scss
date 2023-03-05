@@ -1,0 +1,45 @@
+.userHeader {
+  display: flex;
+  max-height: 256px;
+}
+
+.userDetails {
+  margin-left: 15px;
+  flex: 1;
+}
+
+.name {
+  margin-top: 0;
+  font-size: 30px;
+}
+
+.userStats {
+  width: 222px;
+  height: 224px;
+  padding: 15px;
+  border: 1px solid #4A4E51;
+}
+
+.reputationChangesTitle {
+  font-weight: 600;
+  margin-bottom: 0;
+}
+
+.reputationChanges {
+  list-style: none;
+  margin-top: 0;
+  padding-left: 0;
+}
+
+.badgeContainer {
+  margin-top: 15px;
+  display: flex;
+
+  .badge {
+    margin-right: 15px;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+}

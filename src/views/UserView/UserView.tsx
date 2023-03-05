@@ -3,8 +3,34 @@ import {useLoaderData} from "react-router-dom";
 import {UserResult} from "../../interfaces/stackExchangeInterface";
 import {user} from "../../apiControllers/stackExchangeApi";
 
+import "./UserView.scss";
+import Badge from "../../components/Badge/Badge";
+
 const defaultState: UserResult = {
   items: [],
+}
+
+const getTimeSinceDate = (dateString: number): { years: number, months: number, days: number } => {
+  const today = new Date();
+  const date = new Date(dateString);
+  let years = today.getFullYear() - date.getFullYear();
+  let months = (today.getMonth() + 1) - (date.getMonth() + 1);
+  let days = today.getDate() - date.getDate();
+
+  if (months < 0 || (months === 0 && days < 0)) {
+    years--;
+    if (months < 0) {
+      months += 12;
+    }
+  }
+
+  if (days < 0) {
+    const lastDayOfMonth = new Date(today.getFullYear(), today.getMonth(), 0).getDate();
+    days += lastDayOfMonth;
+    months--;
+  }
+
+  return { years, months, days };
 }
 
 const useUser = () => {
@@ -25,11 +51,16 @@ const useUser = () => {
     })
   };
 
+
   return {loading, results, onLoad};
 };
 
 function UserView() {
   const {loading, results, onLoad} = useUser();
+
+  const userData = results?.items?.[0];
+
+  const timeSinceDate = getTimeSinceDate(userData?.creation_date * 1000);
 
   useEffect(() => {
     onLoad();
@@ -37,20 +68,37 @@ function UserView() {
 
   return (
     <div className="userView">
-      <div className="resultsWrapper">
-        {loading && <div>Loading...</div>}
-        {results.items.length > 0 && (
-          <div className="resultsContainer">
-            {results.items.map((result) => (
-              <div key={result.user_id}>
-                {result.display_name}
-                <img src={result.profile_image} alt={result.display_name}/>
-                <div></div>
-              </div>
-            ))}
+      {loading && <div>Loading...</div>}
+      {userData && (
+        <div className="userContainer">
+          <div className="userHeader">
+            <div>
+              <img src={userData.profile_image} alt={userData.display_name}/>
+            </div>
+            <div className="userDetails">
+              <h2 className="name"><a href={userData.link} target="_blank">{userData.display_name}</a></h2>
+              <div>User status: {userData.user_type}</div>
+              <div>{`It has been ${timeSinceDate.years} years, ${timeSinceDate.months} months, and ${timeSinceDate.days} days since registration.`}</div>
+            </div>
+            <div className="userStats">
+              <h3>Reputation: {userData.reputation}</h3>
+              <p className="reputationChangesTitle">Reputation changes:</p>
+              <ul className="reputationChanges">
+                <li>Year: {userData.reputation_change_year}</li>
+                <li>Quarter: {userData.reputation_change_quarter}</li>
+                <li>Month: {userData.reputation_change_month}</li>
+                <li>Week: {userData.reputation_change_week}</li>
+                <li>Day: {userData.reputation_change_day}</li>
+              </ul>
+            </div>
           </div>
-        )}
-      </div>
+          <div className="badgeContainer">
+            <Badge badgeNumber={userData.badge_counts.gold} type="gold"/>
+            <Badge badgeNumber={userData.badge_counts.silver} type="silver"/>
+            <Badge badgeNumber={userData.badge_counts.bronze} type="bronze"/>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

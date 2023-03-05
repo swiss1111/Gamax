@@ -1,12 +1,12 @@
 import axios from 'axios';
-import {SearchResult, UserResult} from "../interfaces/stackExchangeInterface";
+import {SearchParams, SearchResult, UserParams, UserResult} from "../interfaces/stackExchangeInterface";
 
 const BASE_URL = 'https://api.stackexchange.com/2.3';
 
 export async function search(
   query: string,
 ): Promise<SearchResult> {
-  const params: any = {
+  const params: SearchParams = {
     page: 1,
     pagesize: 10,
     order: "desc",
@@ -23,7 +23,7 @@ export async function search(
 export async function user(
   ids: number,
 ): Promise<UserResult> {
-  const params: any = {
+  const params: UserParams = {
     order: "desc",
     sort: "reputation",
     site: "stackoverflow"

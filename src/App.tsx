@@ -13,7 +13,7 @@ function App() {
       <SideBar />
       <div className="bodyWrapper">
         <header className="header">
-          <h1>Gamax interjú feladat</h1>
+          <h1>Gamax homework</h1>
         </header>
         <main className="main">
           <RouterProvider router={router} />

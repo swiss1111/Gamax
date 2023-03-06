@@ -2,7 +2,7 @@ import React from "react";
 import {BadgeItem} from "../../interfaces/stackExchangeInterface";
 import "./Badge.scss"
 
-function SearchResultItem(props: BadgeItem) {
+function Badge(props: BadgeItem) {
   const {badgeNumber, type} = props
   return (
     <div className="badge">
@@ -13,4 +13,4 @@ function SearchResultItem(props: BadgeItem) {
   );
 }
 
-export default SearchResultItem;
+export default Badge;

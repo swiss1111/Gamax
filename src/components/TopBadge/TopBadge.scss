@@ -1,0 +1,48 @@
+.topBadge {
+  margin: 15px 0;
+  padding: 15px;
+  border: 1px solid #4A4E51;
+}
+
+.badgeRow {
+  display: flex;
+  border-bottom: 1px solid #4A4E51;
+  padding: 10px 0;
+  font-size: 20px;
+
+  &:first-child {
+    padding-top: 0;
+  }
+
+  &:last-child {
+    padding-bottom: 0;
+    border-bottom: 0;
+  }
+}
+
+.goldBadge {
+  color: gold;
+}
+
+.silverBadge {
+  color: silver;
+}
+
+.bronzeBadge {
+  color: #CBA98B;
+}
+
+.badgeDetails {
+  flex: 1;
+  text-align: right;
+  display: flex;
+  justify-content: end;
+
+  & > div {
+    margin-left: 25px;
+  }
+}
+
+.badgeCount {
+  font-size: 12px;
+}

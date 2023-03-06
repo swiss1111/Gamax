@@ -5,6 +5,7 @@ import {user} from "../../apiControllers/stackExchangeApi";
 
 import "./UserView.scss";
 import Badge from "../../components/Badge/Badge";
+import TopBadge from "../../components/TopBadge/TopBadge";
 
 const defaultState: UserResult = {
   items: [],
@@ -30,7 +31,7 @@ const getTimeSinceDate = (dateString: number): { years: number, months: number, 
     months--;
   }
 
-  return { years, months, days };
+  return {years, months, days};
 }
 
 const useUser = () => {
@@ -43,20 +44,20 @@ const useUser = () => {
 
     user(userId).then(resp => {
       setResults(resp);
-      setLoading(false);
     }).catch(err => {
       console.error('UserView.tsx onLoad', err);
       setResults(defaultState);
+    }).finally(() => {
       setLoading(false);
-    })
+    });
   };
 
 
-  return {loading, results, onLoad};
+  return {loading, results, onLoad, userId};
 };
 
 function UserView() {
-  const {loading, results, onLoad} = useUser();
+  const {loading, results, onLoad, userId} = useUser();
 
   const userData = results?.items?.[0];
 
@@ -96,6 +97,9 @@ function UserView() {
             <Badge badgeNumber={userData.badge_counts.gold} type="gold"/>
             <Badge badgeNumber={userData.badge_counts.silver} type="silver"/>
             <Badge badgeNumber={userData.badge_counts.bronze} type="bronze"/>
+          </div>
+          <div>
+            <TopBadge userId={userId}/>
           </div>
         </div>
       )}

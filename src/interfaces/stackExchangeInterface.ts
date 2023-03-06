@@ -87,3 +87,32 @@ export interface UserParams {
   sort: string;
   site: string;
 }
+
+export interface Badge {
+  user: Owner;
+  badge_type: string,
+  award_count: number;
+  rank: "gold" | "silver" | "bronze";
+  badge_id: number;
+  link: string;
+  name: string;
+}
+
+export interface BadgesResult {
+  items: Badge[];
+  has_more?: boolean;
+  backoff?: number;
+  quota_max?: number;
+  quota_remaining?: number;
+}
+
+export interface BadgeParams {
+  pagesize: number;
+  order: string;
+  sort: string;
+  site: string;
+}
+
+export interface TopBadgesParams {
+  userId: number;
+}

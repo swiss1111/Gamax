@@ -24,12 +24,12 @@ const useSearch = () => {
 
     search(query).then(resp => {
       setResults(resp);
-      setLoading(false);
     }).catch(err => {
       console.error('SearchView.tsx handleSubmit', err);
       setResults(defaultState);
+    }).finally(() => {
       setLoading(false);
-    })
+    });
   };
 
   return {query, loading, results, handleQueryChange, handleSubmit};
